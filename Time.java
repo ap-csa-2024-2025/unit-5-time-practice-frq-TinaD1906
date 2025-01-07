@@ -51,6 +51,22 @@ public class Time
   // TODO: Part F - write the tick method
   public void tick()
   {
+    if (seconds == 60)
+    {
+      seconds = 0;
+      minutes ++;
+    }
+    
+    if (minutes == 60)
+    {
+      minutes = 0; 
+      hours ++;
+    }
+
+    if (hours == 24)
+    {
+      hours = 0;
+    }
 
   }
 
@@ -60,6 +76,13 @@ public class Time
   */
   public void add(Time offset)
   {
+    seconds = seconds + offset.seconds;
+    minutes = minutes + offset.minutes + seconds/60;
+    hours = hours + offset.hours + minutes/60;
+
+    seconds = seconds % 60;
+    minutes = minutes % 60;
+    hours = hours % 24;
 
   }
 }
